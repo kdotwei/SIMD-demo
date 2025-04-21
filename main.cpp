@@ -65,14 +65,14 @@ int main(int argc, char *argv[])
   initValue(values, exponents, output, gold, N);
 
   auto start = std::chrono::high_resolution_clock::now();
-  auto end = std::chrono::high_resolution_clock::now();
   absSerial(values, gold, N);
+  auto end = std::chrono::high_resolution_clock::now();
   auto serial_duration = std::chrono::duration<double>(end - start).count();
   std::cout << "Serial Time: " << serial_duration * 1000000 << "us\n";
 
   start = std::chrono::high_resolution_clock::now();
-  end = std::chrono::high_resolution_clock::now();
   absVector(values, output, N);
+  end = std::chrono::high_resolution_clock::now();
   auto vector_duration = std::chrono::duration<double>(end - start).count();
   std::cout << "SIMD Time: " << vector_duration * 1000000 << "us\n";
 
